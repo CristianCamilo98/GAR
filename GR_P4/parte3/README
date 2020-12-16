@@ -1,0 +1,2 @@
+1. El archivo snmp.conf hay que copiarlo en ~/.snmp/
+2. El archivo hosts hay que copiarlo en /etc/ansible/

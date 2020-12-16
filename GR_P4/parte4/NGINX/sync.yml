@@ -1,0 +1,12 @@
+- hosts: webserver
+  tasks:
+  - name: "sync website"
+    synchronize:
+      src: site/
+      dest: /var/www/helloworld.com
+      archive: no
+      checksum: yes
+      recursive: yes
+      delete: yes
+    become: no
+

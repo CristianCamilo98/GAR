@@ -1,0 +1,21 @@
+---
+ - hosts: servers
+   remote_user: vagrant
+   become: yes
+   become_method: sudo
+
+   tasks:
+    - name: copy config file
+      copy:
+        src: ./snmpd.conf
+        dest: /etc/snmp
+        owner: vagrant
+        group: vagrant
+        mode: 0600
+
+    - name: ensure service is running
+      service:
+       name: snmpd
+       state: restarted
+...
+

@@ -1,0 +1,9 @@
+server {
+  listen 80;
+  listen [::]:80;
+  server_name helloworld.com;
+  root /var/www/helloworld.com;
+  location / {
+  try_files $uri $uri/ =404;
+  }
+}
