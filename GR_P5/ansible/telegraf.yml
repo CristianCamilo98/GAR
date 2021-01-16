@@ -1,0 +1,24 @@
+- hosts: hosts
+  become: yes
+
+  tasks:
+
+  - name: Telegraf repository key
+    apt_key:
+      url: https://repos.influxdata.com/influxdb.key
+      keyring: /etc/apt/trusted.gpg.d/telegraf.gpg
+      state: present
+
+  - name: Telegraf repository
+    apt_repository:
+      repo: "deb https://repos.influxdata.com/ubuntu {{ ansible_distribution_release }} stable"
+      state: present
+      filename: telegraf
+    register: repo_telegraf
+
+  - name: install telegraf
+    apt:
+      name:
+        - telegraf
+      state: present
+    register: install_telegraf
