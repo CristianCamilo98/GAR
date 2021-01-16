@@ -1,4 +1,4 @@
-- hosts: hosts
+- hosts: host1
   become: yes
 
   tasks:
@@ -22,3 +22,14 @@
         - telegraf
       state: present
     register: install_telegraf
+
+
+  - name: "Copy file in destination"
+    copy:
+      src: ~/GAR/GR_P5/ansible/telegraf.conf
+      dest: /etc/telegraf/
+      force: yes
+  - name: restart telegraf
+    service:
+      name: telegraf
+      state: restarted
