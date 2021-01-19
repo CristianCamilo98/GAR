@@ -1,5 +1,5 @@
 ---
- - hosts: host1
+ - hosts: host2
    remote_user: vagrant
    become: yes
    become_method: sudo 
@@ -30,4 +30,11 @@
       service:
        name: rsyslog
        state: restarted
+
+    - name: Change permission to be able to write into nagios log
+      ansible.builtin.file:
+        path: /usr/local/nagios/var/nagios.log
+        owner: nagios
+        group: nagios
+        mode: '0666'
 ... 

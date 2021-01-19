@@ -1,0 +1,22 @@
+- hosts: host1
+  become: yes
+
+  tasks:
+
+  - name: Install Nagflux, Install Go programming & required prerequisites packages
+    command: sudo apt-get install -y golang golang-github-influxdb-usage-client-dev git 
+
+  - name: Download and compile Nagflux with the following commands:
+    command: echo "export GOPATH=$HOME/gorepo" >> ~/.bashrc
+
+  - name: 
+    command: source ~/.bashrc    
+
+  - name: 
+    command: mkdir $GOPATH
+
+  - name: 
+    command: go get -v -u github.com/griesbacher/nagflux   
+
+  - name: 
+    command: go build github.com/griesbacher/nagflux 
