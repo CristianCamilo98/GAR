@@ -1,0 +1,11 @@
+---
+- name: Transferimos y ejecutamos el script .
+  hosts: host2
+  remote_user: vagrant
+  sudo: yes
+  tasks:
+     - name: Transferimos el script
+       copy: src=./script_nagios.sh dest=/home/vagrant mode=0777
+
+     - name: Execute the script
+       command: sh /home/vagrant/script_nagios.sh
